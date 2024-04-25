@@ -1,0 +1,46 @@
+local opt = vim.opt
+
+-- General Setup
+opt.secure = true
+opt.modeline = true
+opt.spelllang = 'en' 
+opt.startofline = false         
+opt.title = true                    
+opt.autoread = true
+opt.signcolumn = 'yes'
+opt.scrolloff = 8
+opt.syntax = 'on'
+opt.number = true
+--opt.relativenumber
+opt.termguicolors = true
+opt.secure = true
+opt.modeline = true
+opt.spelllang = en
+opt.title = true
+opt.autoread = true
+opt.showmatch = true
+opt.matchtime=0
+opt.incsearch = true            
+opt.ignorecase = true
+opt.smartcase = true
+opt.fileencoding = utf8
+opt.encoding = 'utf8'
+opt.termencoding = utf8
+opt.conceallevel=0               
+opt.cursorline = true
+opt.wildmenu = true            
+opt.ruler = true
+opt.equalalways = true
+opt.laststatus = 2                 
+opt.shortmess = at                 
+opt.expandtab = true                  
+opt.tabstop=2                    
+opt.shiftwidth=2                 
+opt.showmatch = true         
+opt.textwidth=0              
+opt.shiftround  = true        
+opt.softtabstop = 2              
+opt.autoindent = true          
+opt.smartindent = true           
+opt.splitright = true
+opt.cindent = true                  
