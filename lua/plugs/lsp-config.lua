@@ -5,8 +5,8 @@ local on_attach = function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set({'n', 'i'}, 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set({'n', 'i'}, '<C-k>', vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, opts)
+  vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -41,9 +41,12 @@ cmp.setup({
   },
 })
 
+-- To use these LPS Use the "LspInstall name" command to install the server.
+
 lsp.clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json"}),
 })
 
 lsp.glsl_analyzer.setup({
@@ -51,9 +54,20 @@ lsp.glsl_analyzer.setup({
   capabilities = capabilities
 })
 
+lsp.lua_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
+
 lsp.omnisharp.setup({
   on_attach = on_attach,
   capabilities = capabilities
+})
+
+lsp.jdtls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json"}),
 })
 
 lsp.html.setup({
@@ -72,6 +86,11 @@ lsp.tsserver.setup({
 })
 
 lsp.svelte.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
+
+lsp.rust_analyzer.setup({
   on_attach = on_attach,
   capabilities = capabilities
 })

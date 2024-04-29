@@ -1,5 +1,6 @@
 local g = vim.g
 local Set = vim.api.nvim_set_keymap
+local platform = vim.loop.os_uname().sysname
 local Noremap = { noremap = true, silent = true }
 
 -- Map Leader
@@ -30,13 +31,12 @@ end
 -- Floaterm
 g.floaterm_wintype = 'vsplit'
 g.floaterm_width = 120
-if 'win32' then
+if plaform == "Windows" then
   g.floaterm_shell = 'powershell'
 end
 
 Set("n", "<C-t>", ":FloatermNew<CR>", Noremap)
-Set("t", "<Esc>", "exit<CR>", Noremap)
-
+Set("t", "<Esc>", '<C-\\><C-n>:q<CR>', Noremap)
 
 -- LSP Diagnostic
 Set('n', '<Esc>', ":lclose<CR>", Noremap)

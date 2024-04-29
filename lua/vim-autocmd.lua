@@ -25,3 +25,5 @@ vim.cmd([[
           \ endif
   augroup END
 ]])
+
+vim.cmd([[autocmd VimResized * wincmd =]])
