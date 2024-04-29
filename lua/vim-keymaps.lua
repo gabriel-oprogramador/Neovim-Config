@@ -1,6 +1,5 @@
 local g = vim.g
 local Set = vim.api.nvim_set_keymap
-local platform = vim.loop.os_uname().sysname
 local Noremap = { noremap = true, silent = true }
 
 -- Map Leader
@@ -31,7 +30,7 @@ end
 -- Floaterm
 g.floaterm_wintype = 'vsplit'
 g.floaterm_width = 120
-if plaform == "Windows" then
+if vim.loop.os_uname().sysname == "Windows_NT" then
   g.floaterm_shell = 'powershell'
 end
 
