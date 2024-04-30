@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -- General Setup
 opt.secure = true
+opt.wrap = false
 opt.modeline = true
 opt.spelllang = 'en' 
 opt.startofline = false         
