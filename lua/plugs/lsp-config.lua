@@ -44,6 +44,7 @@ cmp.setup({
 -- To use these LPS Use the "LspInstall name" command to install the server.
 
 lsp.clangd.setup({
+  cmd = {"clangd", "-header-insertion=never"},
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json"}),
@@ -67,7 +68,6 @@ lsp.omnisharp.setup({
 lsp.jdtls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json"}),
 })
 
 lsp.html.setup({
