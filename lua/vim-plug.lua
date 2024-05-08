@@ -3,6 +3,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 --Plugs
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'preservim/nerdcommenter'
 Plug 'alvan/vim-closetag'
 Plug 'voldikss/vim-floaterm'
 Plug 'windwp/nvim-autopairs'

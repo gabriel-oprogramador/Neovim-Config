@@ -10,7 +10,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  vim.keymap.set('n', '<space>F', function()
+  vim.keymap.set('n', '<space>f', function()
     vim.lsp.buf.format { async = true }
   end, opts)
 end
@@ -28,7 +28,7 @@ cmp.setup({
     ['<Down>'] = cmp.mapping.select_next_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-f>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<Esc>'] = cmp.mapping.abort(),
   },
   sources = {
@@ -95,9 +95,9 @@ lsp.rust_analyzer.setup({
   capabilities = capabilities
 })
 
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<space>]', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '<space>[', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>s', vim.diagnostic.open_float)
+vim.keymap.set('n', '<space>q', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<space>e', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>l', vim.diagnostic.setloclist)
 
 

@@ -3,7 +3,7 @@ local Set = vim.api.nvim_set_keymap
 local Noremap = { noremap = true, silent = true }
 
 -- Map Leader
-g.mapleader = ' '
+g.mapleader = '.'
 
 -- Nerd Tree
 Set("n", "<C-n>", ":NERDTreeToggle<CR>", Noremap)

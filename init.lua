@@ -8,9 +8,17 @@ require("vim-autocmd")
 require("vim-keymaps")
 vim.cmd("colorscheme gruvbox")
 
--- Autocomplete => Ctrl + f
--- Show line Error space + e
+-- Leader => .
+-- Rename in File => space + rn
+-- Find File => Leader + ff
+-- Formater => space + f
+-- Autocomplete => Ctrl + Space
+-- Show line Error space + s
 -- List Errors => space + l
+-- Prev error => space + q
+-- Next error => space = e
+-- Comment => leader + cc
+-- Uncomment => leader + cu \_(-_0)_/
 
 vim.cmd("command! Debugger :!code . <CR>")
 Set("n", "<F12>", ":Debugger<CR>", Noremap)
