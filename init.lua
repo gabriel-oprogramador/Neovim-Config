@@ -10,15 +10,21 @@ vim.cmd("colorscheme gruvbox")
 
 -- Leader => .
 -- Rename in File => space + rn
--- Find File => Leader + ff
+-- Find File => space + ff
+-- Find Buffer => space + fb
 -- Formater => space + f
--- Autocomplete => Ctrl + Space
--- Show line Error space + s
+-- Autocomplete => Ctrl + f
+-- Show Line Error space + e
 -- List Errors => space + l
--- Prev error => space + q
--- Next error => space = e
+-- Prev Error => space + w
+-- Next Error => space = s
+-- Swap Splits Horizontally => Ctrl + r
 -- Comment => leader + cc
 -- Uncomment => leader + cu \_(-_0)_/
+
+-- For some LSPs on Windows you need to allow Powershell to execute commands. Example(tsserver)
+-- Enable Commands  "Set-ExecutionPolicy Unrestricted"
+-- Disable Commands "Set-ExecutionPolicy Restricted"
 
 vim.cmd("command! Debugger :!code . <CR>")
 Set("n", "<F12>", ":Debugger<CR>", Noremap)

@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -- General Setup
 opt.secure = true
+opt.backup = false
 opt.wrap = false
 opt.modeline = true
 opt.spelllang = 'en' 
@@ -21,6 +22,7 @@ opt.title = true
 opt.autoread = true
 opt.showmatch = true
 opt.matchtime=0
+opt.hlsearch = false
 opt.incsearch = true            
 opt.ignorecase = true
 opt.smartcase = true

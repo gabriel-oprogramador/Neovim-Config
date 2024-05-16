@@ -28,7 +28,7 @@ cmp.setup({
     ['<Down>'] = cmp.mapping.select_next_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-f>'] = cmp.mapping.complete(),
     ['<Esc>'] = cmp.mapping.abort(),
   },
   sources = {
@@ -95,9 +95,9 @@ lsp.rust_analyzer.setup({
   capabilities = capabilities
 })
 
-vim.keymap.set('n', '<space>s', vim.diagnostic.open_float)
-vim.keymap.set('n', '<space>q', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '<space>e', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<space>w', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<space>s', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>l', vim.diagnostic.setloclist)
 
 

@@ -4,6 +4,9 @@ local Noremap = { noremap = true, silent = true }
 
 -- Map Leader
 g.mapleader = '.'
+vim.keymap.set("v", "<space>y", "\"+y")
+vim.keymap.set("x", "<S-left>p", "\"-dP")
+vim.keymap.set("n", "JJ", "mzJ'z")
 
 -- Nerd Tree
 Set("n", "<C-n>", ":NERDTreeToggle<CR>", Noremap)
@@ -18,13 +21,14 @@ Set("n", "<C-h>", "<C-w>h", Noremap)
 Set("n", "<C-j>", "<C-w>j", Noremap)
 Set("n", "<C-k>", "<C-w>k", Noremap)
 Set("n", "<C-l>", "<C-w>l", Noremap)
+Set("n", "<C-r>", "<C-w>r", Noremap)
 
 -- Telescope
 if 'nvim' then
-    Set('n', '<Leader>ff', ":Telescope find_files<CR>", Noremap)
-    Set('n', '<Leader>fg', ":Telescope live_grep<CR>", Noremap)
-    Set('n', '<Leader>fb', ":Telescope buffers<CR>", Noremap)
-    Set('n', '<Leader>fh', ":Telescope help_tags<CR>", Noremap)
+    Set('n', '<space>ff', ":Telescope find_files<CR>", Noremap)
+    Set('n', '<space>fg', ":Telescope live_grep<CR>", Noremap)
+    Set('n', '<space>fb', ":Telescope buffers<CR>", Noremap)
+    Set('n', '<space>fh', ":Telescope help_tags<CR>", Noremap)
 end
 
 -- Floaterm
