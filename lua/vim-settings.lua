@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- General Setup
-opt.secure = true
+opt.secure = false
 opt.backup = false
 opt.wrap = false
 opt.modeline = true

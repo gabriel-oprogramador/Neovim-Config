@@ -35,7 +35,11 @@ end
 g.floaterm_wintype = 'vsplit'
 g.floaterm_width = 120
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  g.floaterm_shell = 'powershell'
+	if vim.fn.executable('Pwsh') == 1 then
+  		g.floaterm_shell = 'Pwsh'
+	else
+		g.floaterm_shell = 'Powershell'
+	end
 end
 
 Set("n", "<C-t>", ":FloatermNew<CR>", Noremap)

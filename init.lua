@@ -26,9 +26,6 @@ vim.cmd("colorscheme gruvbox")
 -- Enable Commands  "Set-ExecutionPolicy Unrestricted"
 -- Disable Commands "Set-ExecutionPolicy Restricted"
 
-vim.cmd("command! Debugger :!code . <CR>")
-Set("n", "<F12>", ":Debugger<CR>", Noremap)
-
 -- Web Development
 -- npm install -g http-server
 -- http-server
@@ -37,13 +34,13 @@ Set("n", "<F12>", ":Debugger<CR>", Noremap)
 
 -- Transparency -------------------------------
 
--- Uncomment for Transfer by default
----> vim.cmd [[
---->   hi Normal guibg=NONE ctermbg=NONE
---->   hi LineNr guibg=NONE ctermbg=NONE
---->   hi SignColumn guibg=NONE ctermbg=NONE
---->   hi EndOfBuffer guibg=NONE ctermbg=NONE
----> ]]
+-- Comment to disable Transparency by default
+ vim.cmd [[
+   hi Normal guibg=NONE ctermbg=NONE
+   hi LineNr guibg=NONE ctermbg=NONE
+   hi SignColumn guibg=NONE ctermbg=NONE
+   hi EndOfBuffer guibg=NONE ctermbg=NONE
+ ]]
 
 function EnableTransparency()
   vim.cmd [[
@@ -52,22 +49,31 @@ function EnableTransparency()
     hi SignColumn guibg=NONE ctermbg=NONE
     hi EndOfBuffer guibg=NONE ctermbg=NONE
   ]]
-  print("Transparência ativada")
+  print("Transparency on")
 end
 
 -- #202020 or #282828
 function DisableTransparency()
   vim.cmd [[
-    hi Normal guibg=#202020 ctermbg=NONE  " Ajuste para a cor de fundo desejada do Gruvbox
+    hi Normal guibg=#202020 ctermbg=NONE
     hi LineNr guibg=#202020 ctermbg=NONE
     hi SignColumn guibg=#303030 ctermbg=NONE
     hi EndOfBuffer guibg=#202020 ctermbg=NONE
   ]]
-  print("Transparência desativada")
+  print("Transparency off")
 end
 
 -- Command to disable transparency
 vim.api.nvim_create_user_command('EnableTransparency', EnableTransparency, {})
 
--- Comando para desativar a transparência
+-- Command to disable transparency
 vim.api.nvim_create_user_command('DisableTransparency', DisableTransparency, {})
+
+function OpenDebuguer()
+	vim.fn.system('code .')
+end
+
+Set("n", "<F5>", ":Debugger<CR>", Noremap)
+vim.api.nvim_create_user_command('Debugger', OpenDebuguer, {})
+
+
