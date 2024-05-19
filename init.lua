@@ -35,3 +35,39 @@ Set("n", "<F12>", ":Debugger<CR>", Noremap)
 -- npm install -g browser-sync
 -- browser-sync start --server --files "*.html, *.css, *.js"
 
+-- Transparency -------------------------------
+
+-- Uncomment for Transfer by default
+---> vim.cmd [[
+--->   hi Normal guibg=NONE ctermbg=NONE
+--->   hi LineNr guibg=NONE ctermbg=NONE
+--->   hi SignColumn guibg=NONE ctermbg=NONE
+--->   hi EndOfBuffer guibg=NONE ctermbg=NONE
+---> ]]
+
+function EnableTransparency()
+  vim.cmd [[
+    hi Normal guibg=NONE ctermbg=NONE
+    hi LineNr guibg=NONE ctermbg=NONE
+    hi SignColumn guibg=NONE ctermbg=NONE
+    hi EndOfBuffer guibg=NONE ctermbg=NONE
+  ]]
+  print("Transparência ativada")
+end
+
+-- #202020 or #282828
+function DisableTransparency()
+  vim.cmd [[
+    hi Normal guibg=#202020 ctermbg=NONE  " Ajuste para a cor de fundo desejada do Gruvbox
+    hi LineNr guibg=#202020 ctermbg=NONE
+    hi SignColumn guibg=#303030 ctermbg=NONE
+    hi EndOfBuffer guibg=#202020 ctermbg=NONE
+  ]]
+  print("Transparência desativada")
+end
+
+-- Command to disable transparency
+vim.api.nvim_create_user_command('EnableTransparency', EnableTransparency, {})
+
+-- Comando para desativar a transparência
+vim.api.nvim_create_user_command('DisableTransparency', DisableTransparency, {})
