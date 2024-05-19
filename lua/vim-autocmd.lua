@@ -26,4 +26,19 @@ vim.cmd([[
   augroup END
 ]])
 
+function set_relative_numbers()
+    vim.wo.relativenumber = true
+end
+function set_absolute_numbers()
+    vim.wo.relativenumber = false
+end
+
+vim.cmd([[
+    augroup RelativenumberToggle
+    autocmd!
+    autocmd ModeChanged *:v lua set_relative_numbers()
+    autocmd ModeChanged v:* lua set_absolute_numbers()
+  augroup END
+]])
+
 vim.cmd([[autocmd VimResized * wincmd =]])

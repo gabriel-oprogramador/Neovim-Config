@@ -2,8 +2,6 @@ local g = vim.g
 local Set = vim.api.nvim_set_keymap
 local Noremap = { noremap = true, silent = true }
 
--- Map Leader
-g.mapleader = '.'
 vim.keymap.set("v", "<space>y", "\"+y")
 vim.keymap.set("x", "<S-left>p", "\"-dP")
 vim.keymap.set("n", "JJ", "mzJ'z")
