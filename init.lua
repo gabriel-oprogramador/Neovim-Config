@@ -71,17 +71,17 @@ vim.api.nvim_create_user_command('EnableTransparency', EnableTransparency, {})
 -- Command to disable transparency
 vim.api.nvim_create_user_command('DisableTransparency', DisableTransparency, {})
 
-function OpenDebuguer()
+function OpenDebugger()
   vim.fn.system('code .')
 end
 
 -- For C or C++
 -- Install the Visual Studio Code "Makefile Tools" extension
--- Use this Clang to debug in GDB format! @Obs: Only if you are on Windows.
+-- Use this Clang to debug in GDB format! @Note: Only if you are on Windows.
 -- https://github.com/mstorsjo/llvm-mingw/releases
--- I recommend using the W64devkit which contains GCC, G++ GDB, Make, mkdir, rmdir and more for Windows. Obs: Only if you are on Windows.
+-- I recommend using the W64devkit which contains GCC, G++ GDB, Make, mkdir, rmdir and more for Windows. @Note: Only if you are on Windows.
 -- https://github.com/skeeto/w64devkit
 Set("n", "<F5>", ":Debugger<CR>", Noremap)
-vim.api.nvim_create_user_command('Debugger', OpenDebuguer, {})
+vim.api.nvim_create_user_command('Debugger', OpenDebugger, {})
 
 
