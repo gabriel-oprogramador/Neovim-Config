@@ -47,3 +47,30 @@ require("gruvbox").setup({
     dim_inactive = false,
     transparent_mode = false,
   })
+
+  function EnableTransparency()
+    vim.cmd [[
+      hi Normal guibg=NONE ctermbg=NONE
+      hi LineNr guibg=NONE ctermbg=NONE
+      hi SignColumn guibg=NONE ctermbg=NONE
+      hi EndOfBuffer guibg=NONE ctermbg=NONE
+    ]]
+    print("Transparency On")
+  end
+  
+  -- #202020 or #282828
+  function DisableTransparency()
+    vim.cmd [[
+      hi Normal guibg=#181818 ctermbg=NONE
+      hi LineNr guibg=#181818 ctermbg=NONE
+      hi SignColumn guibg=#232323 ctermbg=NONE
+      hi EndOfBuffer guibg=#181818 ctermbg=NONE
+    ]]
+    print("Transparency Off")
+  end
+  
+  -- Command to disable transparency
+  vim.api.nvim_create_user_command('EnableTransparency', EnableTransparency, {})
+  
+  -- Command to disable transparency
+  vim.api.nvim_create_user_command('DisableTransparency', DisableTransparency, {})

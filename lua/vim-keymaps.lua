@@ -30,7 +30,6 @@ if 'nvim' then
 end
 
 -- Floaterm
-g.floaterm_wintype = 'vsplit'
 g.floaterm_width = 120
 if vim.loop.os_uname().sysname == "Windows_NT" then
 	if vim.fn.executable('Pwsh') == 1 then
@@ -40,8 +39,35 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 	end
 end
 
-Set("n", "<C-t>", ":FloatermNew<CR>", Noremap)
-Set("t", "<Esc>", '<C-\\><C-n>:q<CR>', Noremap)
+vim.cmd [[
+	" Configuration example
+	hi Floaterm guibg=NONE
+	hi FloatermBorder guibg=#303030 guifg=white
+]]
+
+g.floaterm_keymap_new = '<space>ft'
+g.floaterm_keymap_prev = '<space>fp'
+g.floaterm_keymap_next = '<space>fn'
+g.floaterm_keymap_kill = '<space>fk'
+g.floaterm_keymap_hide = '<esc>'
+g.floaterm_keymap_toggle = '<C-t>'
+g.floaterm_wintype = 'float'
+g.floaterm_titleposition = 'center'
+g.floaterm_positio = 'right' -- Need wintype = 'split'/'vsplit'
+
+-- Add " in Word / Line
+Set('n', '<space>w"', 'viw<ESC>a"<esc>bi"<esc>', Noremap)
+Set("n", "<space>w'", "viw<ESC>a'<esc>bi'<esc>", Noremap)
+
+-- Add ' in Word / Line
+Set('n', '<space>l"', 'V<ESC>A"<esc>I"<esc>', Noremap)
+Set("n", "<space>l'", "V<ESC>A'<esc>I'<esc>", Noremap)
+Set('n', '<space>ll"', 'N<ESC>$x<esc>^x<esc>', Noremap)
+Set("n", "<space>ll'", "N<ESC>$x<esc>^x<esc>", Noremap)
+
+-- Nerd Commenter Toggle
+vim.api.nvim_set_keymap('n', '<space>c', '<Plug>NERDCommenterToggle', {})
+vim.api.nvim_set_keymap('v', '<space>c', '<Plug>NERDCommenterToggle<CR>', {})
 
 -- LSP Diagnostic
 Set('n', '<Esc>', ":lclose<CR>", Noremap)

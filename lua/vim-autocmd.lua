@@ -26,6 +26,12 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.cmd[[
+    augroup DisableAutomaticComment
+    autocmd!
+    autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=0
+]]
+
 function set_relative_numbers()
     vim.wo.relativenumber = true
 end

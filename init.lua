@@ -1,3 +1,6 @@
+-- Neovim-Config @gabriel_oprogramador
+-- Version 14.00
+
 local Set = vim.api.nvim_set_keymap
 local Noremap = { noremap = true, silent = true }
 
@@ -8,22 +11,45 @@ require("vim-autocmd")
 require("vim-keymaps")
 vim.cmd("colorscheme gruvbox")
 
+-- On Windows I recommend using PowerShell 7 and Windows Terminal!
+-- To use these LPS Use the "LspInstall name" command to install the server.
+
+-- Transparency -------------------------------
+-- Uncomment the desired option.
+vim.cmd [[autocmd VimEnter * lua EnableTransparency()]]
+--vim.cmd [[autocmd VimEnter * lua DisableTransparency()]]
+
+--Command to activate and deactivate transparency.
+---> :EnableTransparency
+---> :DisableTransparency
+
 -- Map Leader
 vim.g.mapleader = '.'
-
 -- Rename in File => space + rn
 -- Find File => space + ff
 -- Find Buffer => space + fb
 -- Formater => space + f
 -- Autocomplete => Ctrl + f
+-- Comment Toggle => space + c 
 -- Show Line Error space + e
 -- List Errors => space + l
 -- Prev Error => space + w
 -- Next Error => space = s
 -- Swap Splits Horizontally => Ctrl + r
--- Comment => leader + cc |_(*-*)_|
--- Uncomment => leader + cu \_(-_0)_/
+-- Terminal Toggle => Ctrl + t @Note If you don't already have one, create a new one.
+-- Terminal New => space + ft
+-- Terminal Prev => space + fp
+-- Terminal Next => space + fn
+-- Terminal Kill => space + fk
+-- Terminal Hide => esc
+-- Involve the word in ' => space + w + '
+-- Involve the word in " => space + w + "
+-- Wrap the line in ' => space + l + '
+-- Wrap the line in " => space + l + "
+-- Remove the ' from the line => space + ll + '
+-- Remove the " from the line => space + ll + "
 
+-- NOTE --
 -- For some LSPs on Windows you need to allow Powershell to execute commands. Example(tsserver)
 -- Enable Commands  "Set-ExecutionPolicy Unrestricted"
 -- Disable Commands "Set-ExecutionPolicy Restricted"
@@ -33,43 +59,6 @@ vim.g.mapleader = '.'
 -- http-server
 -- npm install -g browser-sync
 -- browser-sync start --server --files "*.html, *.css, *.js"
-
--- Transparency -------------------------------
-
--- Comment to disable Transparency by default
- vim.cmd [[
-   hi Normal guibg=NONE ctermbg=NONE
-   hi LineNr guibg=NONE ctermbg=NONE
-   hi SignColumn guibg=NONE ctermbg=NONE
-   hi EndOfBuffer guibg=NONE ctermbg=NONE
- ]]
-
-function EnableTransparency()
-  vim.cmd [[
-    hi Normal guibg=NONE ctermbg=NONE
-    hi LineNr guibg=NONE ctermbg=NONE
-    hi SignColumn guibg=NONE ctermbg=NONE
-    hi EndOfBuffer guibg=NONE ctermbg=NONE
-  ]]
-  print("Transparency On")
-end
-
--- #202020 or #282828
-function DisableTransparency()
-  vim.cmd [[
-    hi Normal guibg=#181818 ctermbg=NONE
-    hi LineNr guibg=#181818 ctermbg=NONE
-    hi SignColumn guibg=#232323 ctermbg=NONE
-    hi EndOfBuffer guibg=#181818 ctermbg=NONE
-  ]]
-  print("Transparency Off")
-end
-
--- Command to disable transparency
-vim.api.nvim_create_user_command('EnableTransparency', EnableTransparency, {})
-
--- Command to disable transparency
-vim.api.nvim_create_user_command('DisableTransparency', DisableTransparency, {})
 
 function OpenDebugger()
   vim.fn.system('code .')
