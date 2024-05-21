@@ -49,11 +49,11 @@ g.floaterm_keymap_new = '<space>ft'
 g.floaterm_keymap_prev = '<space>fp'
 g.floaterm_keymap_next = '<space>fn'
 g.floaterm_keymap_kill = '<space>fk'
-g.floaterm_keymap_hide = '<esc>'
 g.floaterm_keymap_toggle = '<C-t>'
 g.floaterm_wintype = 'float'
 g.floaterm_titleposition = 'center'
 g.floaterm_positio = 'right' -- Need wintype = 'split'/'vsplit'
+Set("t", "<Esc>", '<C-\\><C-n>:FloatermHide<CR>', Noremap)
 
 -- Add " in Word / Line
 Set('n', '<space>w"', 'viw<ESC>a"<esc>bi"<esc>', Noremap)
