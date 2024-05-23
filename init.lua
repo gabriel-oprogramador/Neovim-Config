@@ -1,5 +1,5 @@
 -- Neovim-Config @gabriel_oprogramador
--- Version 14.00
+-- Version 17.00
 
 local Set = vim.api.nvim_set_keymap
 local Noremap = { noremap = true, silent = true }
@@ -35,7 +35,7 @@ vim.g.mapleader = '.'
 -- List Errors => space + l
 -- Prev Error => space + w
 -- Next Error => space = s
--- Swap Splits Horizontally => Ctrl + r
+-- Swap Splits Horizontally => tab @Note in normal mode
 -- Terminal Toggle => Ctrl + t @Note If you don't already have one, create a new one.
 -- Terminal New => space + ft
 -- Terminal Prev => space + fp
