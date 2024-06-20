@@ -27,7 +27,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.fileencoding = utf8
 opt.encoding = 'utf8'
-opt.termencoding = utf8
 opt.conceallevel=0               
 opt.cursorline = true
 opt.wildmenu = true            
