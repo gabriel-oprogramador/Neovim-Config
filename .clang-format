@@ -1,0 +1,22 @@
+﻿---
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: 'true'
+AlignEscapedNewlines: Left
+AllowAllConstructorInitializersOnNextLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakBeforeMultilineStrings: 'true'
+AlwaysBreakTemplateDeclarations: 'Yes'
+BreakConstructorInitializers: BeforeColon
+BreakStringLiterals: 'true'
+ColumnLimit: '0'
+CompactNamespaces: 'false'
+IncludeBlocks: Regroup
+IndentCaseLabels: 'true'
+Language: Cpp
+PointerAlignment: Left
+Standard: Cpp11
+
+...

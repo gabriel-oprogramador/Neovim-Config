@@ -1,5 +1,6 @@
 # Neovim-Config
 Configuration for Neovim using Lua language, theme based on Visual Assist.
+To use clang-format, copy it to a root folder like your user's so that all subfolders use this pattern.  
 
 # About
 Gruvbox theme modified to look like the "Visual Assist" theme 
