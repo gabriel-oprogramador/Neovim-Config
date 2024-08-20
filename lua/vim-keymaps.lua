@@ -20,6 +20,8 @@ Set("n", "<C-j>", "<C-w>j", Noremap)
 Set("n", "<C-k>", "<C-w>k", Noremap)
 Set("n", "<C-l>", "<C-w>l", Noremap)
 Set("n", "<tab>", "<C-w>r", Noremap)
+Set("n", "<space>o", "<C-o>", Noremap)
+Set("n", "<space>p", "<C-i>", Noremap)
 
 -- Telescope
 if 'nvim' then

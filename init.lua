@@ -25,6 +25,8 @@ vim.cmd [[autocmd VimEnter * lua EnableTransparency()]]
 
 -- Map Leader
 vim.g.mapleader = '.'
+-- Jump To Backward => space + o
+-- Jump To Forward => space + p
 -- Rename in File => space + rn
 -- Find File => space + ff
 -- Find Buffer => space + fb
