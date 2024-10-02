@@ -61,10 +61,10 @@ require("gruvbox").setup({
   -- #202020 or #282828
   function DisableTransparency()
     vim.cmd [[
-      hi Normal guibg=#181818 ctermbg=NONE
-      hi LineNr guibg=#181818 ctermbg=NONE
+      hi Normal guibg=#101010 ctermbg=NONE
+      hi LineNr guibg=#101010 ctermbg=NONE
       hi SignColumn guibg=#232323 ctermbg=NONE
-      hi EndOfBuffer guibg=#181818 ctermbg=NONE
+      hi EndOfBuffer guibg=#101010 ctermbg=NONE
     ]]
     print("Transparency Off")
   end
