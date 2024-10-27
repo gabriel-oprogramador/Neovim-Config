@@ -16,8 +16,8 @@ vim.cmd("colorscheme gruvbox")
 
 -- Transparency -------------------------------
 -- Uncomment the desired option.
-vim.cmd [[autocmd VimEnter * lua EnableTransparency()]]
---vim.cmd [[autocmd VimEnter * lua DisableTransparency()]]
+--vim.cmd [[autocmd VimEnter * lua EnableTransparency()]]
+vim.cmd [[autocmd VimEnter * lua DisableTransparency()]]
 
 --Command to activate and deactivate transparency.
 ---> :EnableTransparency
