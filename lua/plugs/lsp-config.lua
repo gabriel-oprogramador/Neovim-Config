@@ -80,10 +80,10 @@ lsp.cssls.setup({
   capabilities = capabilities
 })
 
---lsp.tsserver.setup({
---  on_attach = on_attach,
---  capabilities = capabilities
---})
+lsp.tsserver.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 lsp.svelte.setup({
   on_attach = on_attach,
