@@ -47,7 +47,7 @@ lsp.clangd.setup({
   cmd = {"clangd", "-header-insertion=never"},
   on_attach = on_attach,
   capabilities = capabilities,
-  root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json"}),
+  root_dir = lsp.util.root_pattern({"Makefile", ".git", "compile_commands.json", ".clangd"}),
 })
 
 lsp.glsl_analyzer.setup({
@@ -57,7 +57,18 @@ lsp.glsl_analyzer.setup({
 
 lsp.lua_ls.setup({
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+        format = {
+            enable = true,
+            defaultConfig = {
+                indent_style = "space",
+                indent_size = "2", -- Define 2 espaços para indentação
+            },
+        },
+    },
+  },
 })
 
 lsp.omnisharp.setup({
