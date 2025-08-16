@@ -80,7 +80,7 @@ lsp.config('clangd', {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = { "clangd", "-header-insertion=never", "--background-index", "--clang-tidy" },
-    root_markers = { "Makefile", "compile_commands.json", "compile_flags.txt", ".git" },
+    root_markers = { "compile_commands.json", "Makefile", ".git" },
 })
 lsp.enable('clangd')
 
