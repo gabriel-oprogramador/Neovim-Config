@@ -55,7 +55,6 @@ require("gruvbox").setup({
       hi SignColumn guibg=NONE ctermbg=NONE
       hi EndOfBuffer guibg=NONE ctermbg=NONE
     ]]
-    print("Transparency On")
   end
   
   -- #202020 or #282828
@@ -66,7 +65,6 @@ require("gruvbox").setup({
       hi SignColumn guibg=#232323 ctermbg=NONE
       hi EndOfBuffer guibg=#101010 ctermbg=NONE
     ]]
-    print("Transparency Off")
   end
   
   -- Command to disable transparency

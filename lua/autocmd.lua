@@ -1,3 +1,29 @@
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local clients = vim.lsp.get_clients({ bufnr = bufnr })
+        local can_format = false
+
+        for _, client in ipairs(clients) do
+            if client.supports_method("textDocument/formatting") then
+                can_format = true
+                break
+            end
+        end
+
+        if can_format then
+            vim.lsp.buf.format({ async = true })
+        end
+    end,
+})
+
+vim.cmd [[
+	" Configuration example
+	hi Floaterm guibg=NONE
+	hi FloatermBorder guibg=#303030 guifg=white
+]]
+
 vim.cmd([[
     augroup VimStartupSequence
     autocmd!
@@ -26,7 +52,7 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.cmd[[
+vim.cmd [[
     augroup DisableAutomaticComment
     autocmd!
     autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=0
@@ -35,6 +61,7 @@ vim.cmd[[
 function set_relative_numbers()
     vim.wo.relativenumber = true
 end
+
 function set_absolute_numbers()
     vim.wo.relativenumber = false
 end

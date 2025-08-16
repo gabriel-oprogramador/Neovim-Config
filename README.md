@@ -7,7 +7,6 @@ Gruvbox theme modified to look like the "Visual Assist" theme
 Support for installing LSP automatically.  
 Telescop for quick navigation  
 Floaterm to have several terminals.  
-Already tested with C/C++, Java, Javascript, Typescript, C#, GLSL, Svelt. Html, CSS, Lua  
 Supports transparency ":EnableTransparency" / ":DisableTransparency"
 
 # Dependencies * and Recommendations
@@ -30,24 +29,19 @@ More information in the init.lua file.
 HTML autocomplete, write the tag and it closes by itself.  
 Svelte Autocomplete write the tag without the '<' and select the correct one.  
 
-# Plugs
-gruvbox  
-telescope  
-nerdcommenter  
-vim-closetag  
-vim-floaterm  
-nvim-autopairs  
-auto-pairs  
-vim-polyglot  
-vim-airline  
-vim-airline-themes  
-vim-highlight-cursor-words  
-nerdtree  
-vim-nerdtree-syntax-highlight  
-nerdtree-git-plugin  
-vim-devicons  
-plenary.nvim  
-popup.nvim  
-maso  
-mason-lspconfig  
-nvim-lspconfig  
+# LSP Servers and Their Supported Languages
+
+- `clangd`                     — C / C++
+- `jdtls`                      — Java
+- `omnisharp`                  — C# / .cs
+- `html`                       — HTML / .html
+- `cssls`                      — CSS / .css
+- `lua_ls`                     — Lua / .lua
+- `typescript-language-server` — TypeScript / JavaScript / .ts, .tsx, .js, .jsx
+- `zls`                        — Zig / .zig
+- `gopls`                      — Go / .go
+- `glsl_analyzer`              — GLSL / .vert, .frag
+- `rust_analyzer`              — Rust / .rs
+- `jsonls`                     — JSON / .json
+- `svelte`                     — Svelte / .svelte
+- `pyright`                    — Python / .py

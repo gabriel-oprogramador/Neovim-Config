@@ -1,19 +1,13 @@
--- Neovim-Config @gabriel_oprogramador
--- Version 17.00
 
-local Set = vim.api.nvim_set_keymap
-local Noremap = { noremap = true, silent = true }
+require('settings')
+require('keymaping')
+require('autocmd')
+require('vimplug')
+require('configs')
+require('lsp')
+require('theme')
 
-require("vim-plug")
-require("vim-plugins")
-require("vim-settings")
-require("vim-autocmd")
-require("vim-keymaps")
 vim.cmd("colorscheme gruvbox")
-
--- On Windows I recommend using PowerShell 7 and Windows Terminal!
--- To use these LPS Use the "LspInstall name" command to install the server.
-
 -- Transparency -------------------------------
 -- Uncomment the desired option.
 --vim.cmd [[autocmd VimEnter * lua EnableTransparency()]]
@@ -25,8 +19,9 @@ vim.cmd [[autocmd VimEnter * lua DisableTransparency()]]
 
 -- Map Leader
 vim.g.mapleader = '.'
--- Jump To Backward => space + o
--- Jump To Forward => space + p
+-- fold scope => space + tab
+-- Jump To Backward => Ctrl + o
+-- Jump To Forward =>  ctrl + p
 -- Rename in File => space + rn
 -- Find File => space + ff
 -- Find Buffer => space + fb
@@ -51,28 +46,17 @@ vim.g.mapleader = '.'
 -- Remove the ' from the line => space + ll + '
 -- Remove the " from the line => space + ll + "
 
--- NOTE --
--- For some LSPs on Windows you need to allow Powershell to execute commands. Example(tsserver)
--- Enable Commands  "Set-ExecutionPolicy Unrestricted"
--- Disable Commands "Set-ExecutionPolicy Restricted"
-
--- Web Development
--- npm install -g http-server
--- http-server
--- npm install -g browser-sync
--- browser-sync start --server --files "*.html, *.css, *.js"
-
-function OpenDebugger()
-  vim.fn.system('code .')
-end
-
--- For C or C++
--- Install the Visual Studio Code "Makefile Tools" extension
--- Use this Clang to debug in GDB format! @Note: Only if you are on Windows.
--- https://github.com/mstorsjo/llvm-mingw/releases
--- I recommend using the W64devkit which contains GCC, G++ GDB, Make, mkdir, rmdir and more for Windows. @Note: Only if you are on Windows.
--- https://github.com/skeeto/w64devkit
-Set("n", "<F5>", ":Debugger<CR>", Noremap)
-vim.api.nvim_create_user_command('Debugger', OpenDebugger, {})
-
-
+-- :MasonInstall clangd                     -- C / C++
+-- :MasonInstall jdtls                      -- Java
+-- :MasonInstall omnisharp                  -- C# / .cs
+-- :MasonInstall html                       -- HTML / .html
+-- :MasonInstall cssls                      -- CSS / .css
+-- :MasonInstall lua_ls                     -- Lua / .lua
+-- :MasonInstall typescript-language-server -- Type/JavaScript / .ts/js, .tsx/jsx
+-- :MasonInstall zls                        -- Zig / .zig
+-- :MasonInstall gopls                      -- Go / .go
+-- :MasonInstall glsl_analyzer              -- GLSL / .vert, .frag
+-- :MasonInstall rust_analyzer              -- Rust / .rs
+-- :MasonInstall jsonls                     -- JSON / .json
+-- :MasonInstall svelte                     -- Svelte / .svelte
+-- :MasonInstall pyright                    -- Python / .py
