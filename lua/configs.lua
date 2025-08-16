@@ -64,7 +64,7 @@ require 'nvim-treesitter.configs'.setup {
     auto_install = true,  -- instala automaticamente quando abrir arquivos de linguagens suportadas
 
     highlight = {
-        enable = true,                             -- destaca código com Treesitter
+        enable = false,                             -- destaca código com Treesitter
         additional_vim_regex_highlighting = false, -- evita highlight duplo
     },
 }
