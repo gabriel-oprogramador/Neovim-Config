@@ -2,6 +2,12 @@ local g = vim.g
 local Set = vim.api.nvim_set_keymap
 local Noremap = { noremap = true, silent = true }
 
+function OpenDebugger()
+  vim.fn.system('code .')
+end
+Set("n", "<F5>", ":DebugProject<CR>", Noremap)
+vim.api.nvim_create_user_command('DebugProject', OpenDebugger, {})
+
 Set("v", "Y", "\"+y", Noremap)
 Set("v", "P", "\"-dP", Noremap)
 Set("n", "JJ", "mzJ'z", Noremap)

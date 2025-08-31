@@ -19,11 +19,15 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.complete(),
         ['<Esc>'] = cmp.mapping.abort(),
     },
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'snippy' },
+        { name = 'calc' },
+    }, {
         { name = 'buffer' },
         { name = 'path' },
-    },
+    }),
 })
 
 -- Integração nvim-autopairs com nvim-cmp
