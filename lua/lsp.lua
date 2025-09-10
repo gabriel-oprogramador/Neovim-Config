@@ -1,54 +1,18 @@
 require('mason').setup({})
 local lsp = vim.lsp
 
--- Configuração básica do autopairs
-require('nvim-autopairs').setup({
-    check_ts = true, -- usa Treesitter para evitar pares errados (ex: dentro de comentários)
-    fast_wrap = {},  -- habilita wrap rápido com tecla
-})
-
-local cmp = require('cmp')
-cmp.setup({
-    mapping = {
-        ['<C-q>'] = cmp.mapping.select_prev_item(),
-        ['<C-e>'] = cmp.mapping.select_next_item(),
-        ['<Up>'] = cmp.mapping.select_prev_item(),
-        ['<Down>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-f>'] = cmp.mapping.complete(),
-        ['<Esc>'] = cmp.mapping.abort(),
-    },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'snippy' },
-        { name = 'calc' },
-    }, {
-        { name = 'buffer' },
-        { name = 'path' },
-    }),
-})
-
--- Integração nvim-autopairs com nvim-cmp
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done()
-)
-
-function SetupDiagnostic()
-    vim.diagnostic.config({
-        virtual_text = true,      -- mostra os erros na linha
-        signs = true,             -- mostra ícones na gutter
-        update_in_insert = false, -- não atualiza durante inserção
-        underline = true,
-        severity_sort = true,
-        float = { border = "rounded" },
-    })
+local orig_open_floating_preview = lsp.util.open_floating_preview
+vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "rounded"
+    opts.focusable = true --opts.focusable or false
+    opts.max_width = opts.max_width or 80
+    opts.max_height = opts.max_height or 6
+    -- Chama a função original com essas opções
+    return orig_open_floating_preview(contents, syntax, opts, ...)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -69,7 +33,88 @@ local on_attach = function(client, bufnr)
     end, opts)
 end
 
-local rootDir = vim.fn.getcwd()
+local lspkind = require('lspkind')
+local cmp = require('cmp')
+cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 42,
+            ellipsis_char = '…',
+            show_labelDetails = true,
+            before = function(entry, vim_item)
+                vim_item.menu = nil
+                vim_item.abbr = vim_item.abbr
+                return vim_item
+            end
+        })
+    },
+    snippet = {
+        expand = function(args)
+            require 'snippy'.expand_snippet(args.body)
+        end,
+    },
+    mapping = {
+        ['<C-q>'] = cmp.mapping.select_prev_item(),
+        ['<C-e>'] = cmp.mapping.select_next_item(),
+        ['<Up>'] = cmp.mapping.select_prev_item(),
+        ['<Down>'] = cmp.mapping.select_next_item(),
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-f>'] = cmp.mapping.complete(),
+        ['<Esc>'] = cmp.mapping.abort(),
+    },
+    -- Priorizando as fontes
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },    -- autocomplete do projeto, LSP primeiro
+        { name = 'nvim-snippy' }, -- snippets
+        { name = 'buffer' },      -- fallback para palavras do buffer
+        { name = 'path' },        -- caminhos de arquivos
+        { name = 'calc' },        -- calculadora
+        { name = 'nvim_lua' },    -- API do Neovim
+    }),
+
+    sorting = {
+        priority_weight = 2, -- LSP mais prioritário
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
+})
+
+-- Integração nvim-autopairs com nvim-cmp
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)
+-- Configuração básica do autopairs
+require('nvim-autopairs').setup({
+    check_ts = true, -- usa Treesitter para evitar pares errados (ex: dentro de comentários)
+    fast_wrap = {},  -- habilita wrap rápido com tecla
+})
+
+function SetupDiagnostic()
+    vim.diagnostic.config({
+        virtual_text = true,     -- mostra os erros na linha
+        signs = true,            -- mostra ícones na gutter
+        update_in_insert = true, -- não atualiza durante inserção
+        underline = true,
+        severity_sort = true,
+        --float = { border = "rounded" },
+    })
+end
+
 SetupDiagnostic()
 
 local function setupServer(name)
@@ -83,23 +128,21 @@ end
 lsp.config('clangd', {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { "clangd", "-header-insertion=never", "--background-index", "--clang-tidy" },
+    cmd = { "clangd", "-header-insertion=never" },
     root_markers = { "compile_commands.json", "Makefile", ".git" },
 })
 lsp.enable('clangd')
+vim.fn.getcwd()
 
-local javaCache = rootDir .. '/.vscode'
-local javaConfig = javaCache .. "/config"
-local javaWorkspace = javaCache .. "/workspace"
 lsp.config('jdtls', {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
-        "jdtls", "-configuration", javaConfig, "-data", javaWorkspace,
+        "jdtls",
         "-vmargs", "-Xms4g", "-Xmx4g", "-XX:+UseG1GC",
         "-XX:+UseStringDeduplication", "-XX:+HeapDumpOnOutOfMemoryError"
     },
-    root_markers = { '.git', 'Makefile', 'compile_commands.json', 'build.gradle', 'build.gradle.kts', 'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts' },
+    root_markers = { '.project', 'build.gradle', 'build.gradle.kts', 'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts', '.git' },
 })
 lsp.enable('jdtls')
 

@@ -1,6 +1,7 @@
 local opt = vim.opt
 
 -- General Setup
+opt.termguicolors = true
 opt.backup = false
 opt.wrap = false
 opt.modeline = true
@@ -33,7 +34,7 @@ opt.expandtab = true
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
-opt.textwidth = 200
+opt.textwidth = 400
 opt.shiftround = true
 opt.autoindent = true
 opt.smartindent = true

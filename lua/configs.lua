@@ -5,11 +5,12 @@ vim.o.foldmethod = "indent"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = true
 vim.o.foldlevel = 99
+--vim.o.colorcolumn = ""
 
-require('nvim-web-devicons').setup {
-  color_icons = true,
-  default = true
-}
+require('nvim-web-devicons').setup({
+    color_icons = true,
+    default = true
+})
 
 -- Configuração Airline
 vim.g.airline_theme = "distinguished"
@@ -23,16 +24,18 @@ vim.g.WebDevIconsUnicodeDecorateFileNodes = 1
 
 -- Telescope
 require('telescope').setup {
+    sorting_strategy = "ascending",
+    layout_config = {},
     defaults = {
-      file_ignore_patterns = {
-        "%.git",
-        "%.cache",
-        "%.png",
-        "%.jpg",
-        "%.jpeg",
-        "%.o",
-        ".cache",
-        "Build"
+        file_ignore_patterns = {
+            "%.git",
+            "%.cache",
+            "%.png",
+            "%.jpg",
+            "%.jpeg",
+            "%.exe",
+            "%.o",
+            "%.d",
         },
     },
 }
@@ -54,21 +57,21 @@ g.floaterm_keymap_kill = '<space>fk'
 g.floaterm_keymap_toggle = '<C-t>'
 g.floaterm_wintype = 'float'
 g.floaterm_titleposition = 'center'
-g.floaterm_positio = 'right' -- Need wintype = 'split'/'vsplit'
+g.floaterm_position = 'right'
 
 -- Configuração do Treesitter
 require 'nvim-treesitter.configs'.setup {
     -- Linguagens que quer instalar
     ensure_installed = {},
-    sync_install = false, -- instala parsers em paralelo
+    sync_install = true, -- instala parsers em paralelo
     auto_install = true,  -- instala automaticamente quando abrir arquivos de linguagens suportadas
 
     highlight = {
-        enable = false,                             -- destaca código com Treesitter
+        enable = false,                            -- destaca código com Treesitter
         additional_vim_regex_highlighting = false, -- evita highlight duplo
     },
 }
 
 -- Ativar o plugin nvim-ts-autotag
-require('nvim-ts-autotag').setup()
+require('nvim-ts-autotag').setup({})
 require("nvim-autopairs").setup({})

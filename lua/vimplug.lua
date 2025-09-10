@@ -8,6 +8,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'voldikss/vim-floaterm'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'onsails/lspkind.nvim'
 
 Plug 'pboettch/vim-highlight-cursor-words'
 Plug 'ellisonleao/gruvbox.nvim'
@@ -32,5 +33,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-calc'
+Plug 'dcampos/nvim-snippy'
+Plug 'dcampos/cmp-snippy'
 
 vim.call'plug#end'
