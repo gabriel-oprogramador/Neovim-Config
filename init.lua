@@ -1,11 +1,12 @@
 
 require('settings')
 require('keymaping')
-require('autocmd')
+
 require('vimplug')
 require('configs')
 require('lsp')
 require('theme')
+require('autocmd')
 
 vim.cmd("colorscheme gruvbox")
 -- Transparency -------------------------------

@@ -1,3 +1,18 @@
+vim.cmd([[
+function! AirlineClock()
+  return strftime("%H:%M")
+endfunction
+
+let g:airline_section_z = airline#section#create_right(['%l/%L:%c, %p%%', '%{AirlineClock()}'])
+]])
+
+if vim.fn.has('timers') == 1 then
+  vim.fn.timer_start(1000, function()
+    vim.cmd('redrawstatus')
+  end, { ['repeat'] = -1 })
+end
+
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()

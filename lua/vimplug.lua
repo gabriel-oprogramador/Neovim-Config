@@ -20,6 +20,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'tpope/vim-fugitive'
 
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
