@@ -79,17 +79,18 @@ cmp.setup({
     }),
 
     sorting = {
-        priority_weight = 2, -- LSP mais prioritário
+        priority_weight = 2,
         comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
+            cmp.config.compare.locality,     -- 🧠 prioriza símbolos perto no código (muito útil)
+            cmp.config.compare.exact,        -- ✅ match exato vem primeiro
+            cmp.config.compare.score,        -- 📊 mantém relevância do LSP (sem pesar muito)
+            cmp.config.compare.offset,       -- 🔍 posição dentro da linha
+            cmp.config.compare.kind,         -- 🧩 separa função/variável/tipo
+            cmp.config.compare.length,       -- 🔠 palavras menores antes
+            cmp.config.compare.order,        -- 🔚 fallback padrão
         },
-    },
+    }
+
 })
 
 -- Integração nvim-autopairs com nvim-cmp
@@ -108,10 +109,9 @@ function SetupDiagnostic()
     vim.diagnostic.config({
         virtual_text = true,     -- mostra os erros na linha
         signs = true,            -- mostra ícones na gutter
-        update_in_insert = true, -- não atualiza durante inserção
+        update_in_insert = true, -- atualiza durante inserção
         underline = true,
         severity_sort = true,
-        --float = { border = "rounded" },
     })
 end
 

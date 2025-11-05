@@ -10,6 +10,7 @@ Floaterm to have several terminals.
 Supports transparency ":EnableTransparency" / ":DisableTransparency"
 
 # Dependencies * and Recommendations
+GCC * => For Treesitter [Windows](https://github.com/skeeto/w64devkit) And Linux  
 Git * => https://git-scm.com/download  
 Vim Plug * => https://github.com/junegunn/vim-plug  
 Node * => https://nodejs.org/en/download/package-manager/current  
