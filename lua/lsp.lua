@@ -77,20 +77,6 @@ cmp.setup({
         { name = 'calc' },        -- calculadora
         { name = 'nvim_lua' },    -- API do Neovim
     }),
-
-    sorting = {
-        priority_weight = 2,
-        comparators = {
-            cmp.config.compare.locality,     -- 🧠 prioriza símbolos perto no código (muito útil)
-            cmp.config.compare.exact,        -- ✅ match exato vem primeiro
-            cmp.config.compare.score,        -- 📊 mantém relevância do LSP (sem pesar muito)
-            cmp.config.compare.offset,       -- 🔍 posição dentro da linha
-            cmp.config.compare.kind,         -- 🧩 separa função/variável/tipo
-            cmp.config.compare.length,       -- 🔠 palavras menores antes
-            cmp.config.compare.order,        -- 🔚 fallback padrão
-        },
-    }
-
 })
 
 -- Integração nvim-autopairs com nvim-cmp
